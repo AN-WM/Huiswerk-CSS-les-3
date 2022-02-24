@@ -1,0 +1,37 @@
+/*font-family: 'Merriweather', serif;*/
+/*font-family: 'Roboto', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400&display=swap');
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+h1, h2, h3 {
+    font-family: Arial, sans-serif;
+}
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+.content-container {
+    flex-basis: 500px;
+}
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+/* --------------- 4.1 Header ------------------- */
+
+header {
+    background-color: red;
+    padding: 30px 0;
+}
+
+/* --------------- 4.2 Introduction ------------- */
+
+.intro {
+    background-color: white;
+}
