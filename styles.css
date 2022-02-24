@@ -1,6 +1,8 @@
-/*font-family: 'Merriweather', serif;*/
-/*font-family: 'Roboto', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --content-container-width: 600px;
+}
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
@@ -12,13 +14,32 @@
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 h1, h2, h3 {
-    font-family: Arial, sans-serif;
+    font-family: 'Merriweather', sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2, h3 {
+    font-weight: 500;
+}
+
+p, li {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 .content-container {
-    flex-basis: 500px;
+    flex-basis: 100%;
+    width: var(--content-container-width);
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 70px 0 0 0;
+    text-align: center;
 }
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
@@ -26,12 +47,64 @@ h1, h2, h3 {
 /* --------------- 4.1 Header ------------------- */
 
 header {
-    background-color: red;
-    padding: 30px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: linear-gradient(to right, hsl(241, 74.6%, 58.2%), hsl(259, 72%, 47%));
+    padding: 20px 0 130px 0;
+}
+
+header p {
+    font-size: 20px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    width: 100vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: flex-end;
+}
+
+nav ul {
+    display: flex;
+    flex-basis: 500px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0 60px;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+#work-together {
+    color: white;
+    background-color: hsl(337, 83%, 60%);
+    border: 3px;
+    border-radius: 30px;
+    padding: 18px 30px;
+    text-transform: uppercase;
+    font-size: 10px;
+    box-shadow: 0 2px 5px 0.1px hsl(241, 75%, 50%)
+}
+
+.squiggle-top {
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 30px);
 }
 
 /* --------------- 4.2 Introduction ------------- */
 
-.intro {
+.hello {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: white;
 }
