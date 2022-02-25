@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-    --content-container-width: 600px;
+    --content-container-width: 500px;
+    --article-width: 220px;
+    --background-purple: hsl(259, 72%, 47%);
+    --background-blue: hsl(241, 74.6%, 58.2%);
+    --background-white: hsl(0, 0%, 100%);
+    --background-grey: hsl(210, 33%, 96%);
+    --text-purple: hsl(259, 71%, 46%);
+    --pink: hsl(337, 83%, 60%);
 }
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
@@ -13,21 +20,43 @@
 
 /* ------------------------------- 2. Typography ----------------------------------- */
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'Merriweather', sans-serif;
 }
 
-h1 {
+h1, h2, h3 {
     font-weight: 700;
 }
 
+h1 {
+    font-size: 1.7em;
+}
+
 h2, h3 {
+    font-size: 1.14em;
+}
+
+h2 {
+    color: var(--text-purple);
+    padding: 10px;
+}
+
+h3 {
+    padding: 5px 0;
+}
+
+h4, p {
     font-weight: 500;
 }
 
 p, li {
     font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    font-size: 12px;
+}
+
+a:link, .hello a:visited {
+    color: var(--text-purple);
+    text-decoration: none;
 }
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -35,31 +64,33 @@ p, li {
 .content-container {
     flex-basis: 100%;
     width: var(--content-container-width);
-    box-sizing: border-box;
     flex-grow: 1;
     flex-shrink: 1;
-    padding: 70px 0 0 0;
+    padding: 70px 0;
     text-align: center;
+}
+
+/*Schuine balken*/
+.bevel-top {
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    /*Kleur wordt hierna per item meegegeven*/
+    position: absolute;
+    top: -30px;
+}
+
+.bevel-white {
+    border-bottom: 30px solid var(--background-white);
+}
+
+.bevel-grey {
+    border-bottom: 30px solid var(--background-grey);
 }
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
 /* --------------- 4.1 Header ------------------- */
-
-header {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: linear-gradient(to right, hsl(241, 74.6%, 58.2%), hsl(259, 72%, 47%));
-    padding: 20px 0 130px 0;
-}
-
-header p {
-    font-size: 20px;
-}
 
 nav {
     display: flex;
@@ -73,7 +104,7 @@ nav {
 
 nav ul {
     display: flex;
-    flex-basis: 500px;
+    flex-basis: 400px;
     flex-grow: 0;
     flex-shrink: 0;
     padding: 0 60px;
@@ -81,22 +112,42 @@ nav ul {
     list-style-type: none;
 }
 
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--background-white);
+    background: linear-gradient(to right, var(--background-blue), var(--background-purple));
+    padding: 20px 20px 45px 20px;
+}
+
+header p {
+    font-size: 17px;
+}
+
+header p, header li {
+    font-weight: 300;
+}
+
+
 #work-together {
-    color: white;
-    background-color: hsl(337, 83%, 60%);
+    color: var(--background-white);
+    background-color: var(--pink);
     border: 3px;
-    border-radius: 30px;
-    padding: 18px 30px;
+    border-radius: 27px;
+    padding: 16px 27px;
     text-transform: uppercase;
-    font-size: 10px;
-    box-shadow: 0 2px 5px 0.1px hsl(241, 75%, 50%)
+    font-size: 9px;
+    box-shadow: 0 2px 5px 0.1px hsl(241, 75%, 50%);
 }
 
 .squiggle-top {
-    width: 60px;
+    width: 46px;
     position: absolute;
     bottom: 0;
-    left: calc(50% - 30px);
+    left: calc(50% - 23px);
 }
 
 /* --------------- 4.2 Introduction ------------- */
@@ -106,5 +157,87 @@ nav ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--background-white);
+    position: relative;
+}
+
+#question {
+    padding: 50px 0 0 0;
+    font-size: 12px;
+}
+
+
+/* --------------- 4.3 Work ------------- */
+
+.work {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-grey);
+    position: relative;
+}
+
+.article-container {
+    display: flex;
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: space-around;
+    align-items: center;
+    margin: 40px;
+}
+
+.article-left {
+    flex-direction: row;
+}
+
+.article-right {
+    flex-direction: row-reverse;
+}
+
+.work-article {
+    width: var(--article-width);
+}
+
+.work-article p {
+    margin: 30px 0;
+}
+
+.article-image {
+    width: 50%;
+    box-shadow: 0 15px 20px -4px hsla(210, 33%, 20%, 0.3);
+}
+
+.work-article a:link, .work-article a:visited {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    font-weight: 900;
+}
+
+.squiggle {
+    width: 35px;
+}
+
+/*Beginstaat*/
+.line {
+    background-color: transparent;
+    border-top: 0.05em solid var(--text-purple);
+    display: inline-block;
+    width: 0.75em;
+    height: 0.2em;
+    transition: all .35s ease-in-out;
+}
+
+/*eindstaat*/
+#link-rolling-stone:hover #line-rolling-stone,
+#link-variety:hover #line-variety,
+#link-worth:hover #line-worth {
+    width: 2em;
 }
