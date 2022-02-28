@@ -3,11 +3,13 @@
 :root {
     --content-container-width: 500px;
     --article-width: 220px;
+    --section-distance: 70px 0;
     --background-purple: hsl(259, 72%, 47%);
     --background-blue: hsl(241, 74.6%, 58.2%);
     --background-white: hsl(0, 0%, 100%);
     --background-grey: hsl(210, 33%, 96%);
     --text-purple: hsl(259, 71%, 46%);
+    --text-grey: hsl(0, 0%, 48%);
     --pink: hsl(337, 83%, 60%);
 }
 
@@ -20,11 +22,10 @@
 
 /* ------------------------------- 2. Typography ----------------------------------- */
 
+/* --------------- 2.1 Global Typography ------------------- */
+
 h1, h2, h3, h4 {
     font-family: 'Merriweather', sans-serif;
-}
-
-h1, h2, h3 {
     font-weight: 700;
 }
 
@@ -32,20 +33,29 @@ h1 {
     font-size: 1.7em;
 }
 
-h2, h3 {
-    font-size: 1.14em;
+h2 {
+    padding: 10px;
 }
 
-h2 {
+h2, h3 {
+    font-size: 1.149em;
+}
+
+h2, h4 {
     color: var(--text-purple);
-    padding: 10px;
 }
 
 h3 {
     padding: 5px 0;
 }
 
-h4, p {
+h4 {
+    font-size: 0.9em;
+    padding: 6px 0;
+    font-weight: 900;
+}
+
+p {
     font-weight: 500;
 }
 
@@ -54,9 +64,38 @@ p, li {
     font-size: 12px;
 }
 
-a:link, .hello a:visited {
+a:link, a:visited {
     color: var(--text-purple);
     text-decoration: none;
+}
+
+/* --------------- 2.2 Specific Typography ------------------- */
+
+header p {
+    font-size: 17px;
+}
+
+header p, header li {
+    font-weight: 300;
+}
+
+.work-article p {
+    margin: 30px 0;
+}
+
+.work-article a:link, .work-article a:visited {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    font-weight: 900;
+}
+
+.services-article p {
+    font-weight: 300;
+    font-size: 9.5px;
+    color: var(--text-grey);
+    padding: 10px 0;
 }
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -66,7 +105,7 @@ a:link, .hello a:visited {
     width: var(--content-container-width);
     flex-grow: 1;
     flex-shrink: 1;
-    padding: 70px 0;
+    padding: var(--section-distance);
     text-align: center;
 }
 
@@ -123,16 +162,7 @@ header {
     padding: 20px 20px 45px 20px;
 }
 
-header p {
-    font-size: 17px;
-}
-
-header p, header li {
-    font-weight: 300;
-}
-
-
-#work-together {
+#header-button {
     color: var(--background-white);
     background-color: var(--pink);
     border: 3px;
@@ -152,7 +182,7 @@ header p, header li {
 
 /* --------------- 4.2 Introduction ------------- */
 
-.hello {
+.hello-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -163,13 +193,12 @@ header p, header li {
 
 #question {
     padding: 50px 0 0 0;
-    font-size: 12px;
 }
 
 
 /* --------------- 4.3 Work ------------- */
 
-.work {
+.work-section {
     display: flex;
     flex-direction: column;
     flex-basis: 50px;
@@ -179,9 +208,10 @@ header p, header li {
     align-items: center;
     background-color: var(--background-grey);
     position: relative;
+    padding: var(--section-distance);
 }
 
-.article-container {
+.work-container {
     display: flex;
     flex-basis: 100%;
     flex-grow: 0;
@@ -203,29 +233,16 @@ header p, header li {
     width: var(--article-width);
 }
 
-.work-article p {
-    margin: 30px 0;
-}
-
 .article-image {
     width: 50%;
     box-shadow: 0 15px 20px -4px hsla(210, 33%, 20%, 0.3);
-}
-
-.work-article a:link, .work-article a:visited {
-    position: relative;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    font-size: 9px;
-    letter-spacing: 0.05em;
-    font-weight: 900;
 }
 
 .squiggle {
     width: 35px;
 }
 
-/*Beginstaat*/
+/*Beginstaat lijntje*/
 .line {
     background-color: transparent;
     border-top: 0.05em solid var(--text-purple);
@@ -235,9 +252,40 @@ header p, header li {
     transition: all .35s ease-in-out;
 }
 
-/*eindstaat*/
+/*Eindstaat lijntje*/
 #link-rolling-stone:hover #line-rolling-stone,
 #link-variety:hover #line-variety,
 #link-worth:hover #line-worth {
     width: 2em;
+}
+
+/* --------------- 4.4 Services ------------- */
+
+.services {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: var(--section-distance);
+}
+
+.services-article {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 230px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: flex-start;
+    border: 1px solid var(--background-purple);
+    padding: 24px;
+    margin: 12px;
+}
+
+.services-icon {
+    width: 50px;
+}
+
+.line-break {
+    flex-basis: 100%;
+    height: 0;
 }
