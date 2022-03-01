@@ -8,28 +8,26 @@
 <body>
 <header>
     <nav>
-        <ul>
-            <li>Case Studies</li>
-            <li>Services</li>
-            <li>Contact Us</li>
+        <ul id="nav-links">
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
         </ul>
     </nav>
 
-    <div class="content-container">
+    <div class="content-container header-container">
         <h1>Your website is an investment in the success of your business.</h1>
-        <br/>
         <p>We are here to help you succeed.</p>
-        <br/>
         <input class="pink-button" id="header-button" type="submit" value="Let's work together">
     </div>
 
-    <img class="squiggle-top" src="assets/squiggle_line_stripe.svg" alt="squiggle line"/>
+<!--    <img class="squiggle-top" src="assets/squiggle_line_stripe.svg" alt="squiggle line"/>-->
 </header>
 
 <section class="hello-section">
     <div class="bevel-top bevel-white"></div>
 
-    <div class="content-container">
+    <div class="content-container hello-container">
         <h2>Rekupe is a digital agency in Los Angeles. </h2>
         <h2>We use strategic UX, SEO optimization and beautiful visual designs to help your business grow.</h2>
         <h2>We see every project as a fresh opportunity, pushing ourselves to create new digital experiences.</h2>
@@ -37,7 +35,7 @@
     </div>
 </section>
 
-<section class="work-section">
+<section class="work-section" id="case-studies">
     <div class="bevel-top bevel-grey"></div>
 
     <div class="work-container article-left">
@@ -85,7 +83,7 @@
     </div>
 </section>
 
-<section class="services">
+<section class="services-section" id="services">
     <div class="bevel-top bevel-white"></div>
 
     <article class="services-article">
@@ -142,23 +140,24 @@
     <div class="bevel-bottom"></div>
 </section>
 
-<form class="contact-form">
+<form class="contact-form" id="contact-us">
     <h1>Let's work together</h1>
     <p>Have a question? Need a quote? Let us know!</p>
 
     <label for="form-name" class="form-item">
-        <p>Name</p>
+        Name
         <input class="form-field" id="form-name" type="text" name="name" placeholder="Name"/>
     </label>
 
     <label for="form-email" class="form-item">
-        <p>Email</p>
+        Email
         <input class="form-field" id="form-email" type="email" name="email" placeholder="Email"/>
     </label>
 
     <label for="form-message" class="form-item">
-        <p>Message</p>
-        <textarea rows="4" cols="50" class="form-field" id="form-message" name="message" placeholder="Message"></textarea>
+        Message
+        <textarea rows="4" cols="50" class="form-field" id="form-message" name="message"
+                  placeholder="Message"></textarea>
     </label>
 
     <input class="pink-button" id="submit-button" type="submit" value="Send">

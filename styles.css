@@ -3,12 +3,12 @@
 :root {
     --content-container-width: 514px;
     --article-width: 220px;
-    --section-distance: 70px 0;
     --form-height: 35px;
     --background-purple: hsl(259, 72%, 47%);
     --background-blue: hsl(241, 74.6%, 58.2%);
     --background-white: hsl(0, 0%, 100%);
     --background-grey: hsl(210, 33%, 96%);
+    --background-text-purple: hsl(248, 100%, 97%);
     --text-purple: hsl(259, 71%, 46%);
     --text-grey: hsl(0, 0%, 48%);
     --pink: hsl(337, 83%, 60%);
@@ -37,6 +37,7 @@ body, .form-field {
 
 h1 {
     font-size: 1.7em;
+    margin: 15px;
 }
 
 h2 {
@@ -65,7 +66,7 @@ p {
     font-weight: 300;
 }
 
-p, li {
+p {
     font-size: 12px;
 }
 
@@ -81,11 +82,20 @@ a:link, a:visited {
 
 /* --------------- 2.2 Specific Typography ------------------- */
 
+#nav-links a:link, #nav-links a:visited, header {
+    color: var(--background-white);
+}
+
+#nav-links a:link, #nav-links a:visited {
+    font-size: 13px;
+    font-weight: 300;
+}
+
 header p {
     font-size: 17px;
 }
 
-.work-article p, .hello-section p, .form-item p {
+.work-article p, .hello-section p, label {
     font-weight: 500;
 }
 
@@ -107,16 +117,34 @@ header p {
     padding: 10px 0;
 }
 
-.contact-form h1 {
-    padding: 15px;
-}
-
-.form-item p {
+label {
     font-size: 10px;
 }
 
 footer p {
     font-size: 0.53em;
+}
+
+.hello-section::before, .work-section::before, .services-section::before {
+    font-weight: 700;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.hello-section::before, .work-section::before {
+    font-size: 20em;
+}
+
+.services-section::before {
+    font-size: 11em;
+}
+
+.hello-section::before, .services-section::before {
+    color: var(--background-text-purple);
+}
+
+.work-section::before {
+    color: var(--background-white);
 }
 
 
@@ -127,8 +155,12 @@ footer p {
     width: var(--content-container-width);
     flex-grow: 1;
     flex-shrink: 1;
-    padding: var(--section-distance);
     text-align: center;
+    position: relative;
+}
+
+.content-container, .work-container, .services-article {
+    z-index: 10;
 }
 
 .pink-button {
@@ -143,19 +175,30 @@ footer p {
     box-shadow: 0 2px 5px 0.1px hsl(241, 75%, 50%);
 }
 
+/*Basis voor zwevende achtergrond tekst*/
+.hello-section::before, .work-section::before, .services-section::before {
+    display: block;
+    position: absolute;
+    height: 200px;
+    width: 1000px;
+    top: 0;
+    left: calc(50% - 500px);
+    z-index: 2;
+}
+
 /*Schuine balken*/
 .bevel-top {
     border-right: 100vw solid transparent;
     position: absolute;
-    top: -30px;
+    top: -25px;
 }
 
 .bevel-white {
-    border-bottom: 30px solid var(--background-white);
+    border-bottom: 25px solid var(--background-white);
 }
 
 .bevel-grey {
-    border-bottom: 30px solid var(--background-grey);
+    border-bottom: 25px solid var(--background-grey);
 }
 
 .bevel-bottom {
@@ -196,16 +239,27 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--background-white);
     background: var(--background-gradient);
     padding: 20px 20px 45px 20px;
 }
 
-.squiggle-top {
-    width: 46px;
+.header-container {
+    margin: 20px 20px 70px 20px;
+}
+
+header::after {
+    content: "";
     position: absolute;
+    height: 80px;
+    width: 46px;
     bottom: 0;
     left: calc(50% - 23px);
+    background-image: url("assets/squiggle_line_stripe.svg");
+    background-size: contain;
+}
+
+#header-button {
+    margin: 20px 0 0 0;
 }
 
 /* --------------- 4.2 Introduction ------------- */
@@ -219,10 +273,17 @@ header {
     position: relative;
 }
 
+.hello-container {
+    margin: 120px 0;
+}
+
 #question {
     padding: 50px 0 0 0;
 }
 
+.hello-section::before {
+    content: "hello";
+}
 
 /* --------------- 4.3 Work ------------- */
 
@@ -236,7 +297,12 @@ header {
     align-items: center;
     background-color: var(--background-grey);
     position: relative;
-    padding: var(--section-distance);
+    padding: 145px 0 120px 0;
+}
+
+.work-section::before {
+    content: "work";
+    line-height: 345px;
 }
 
 .work-container {
@@ -246,7 +312,7 @@ header {
     flex-shrink: 0;
     justify-content: space-around;
     align-items: center;
-    margin: 40px;
+    margin: 30px 40px;
 }
 
 .article-left {
@@ -262,7 +328,8 @@ header {
 }
 
 .article-image {
-    width: 50%;
+    width: 53%;
+    margin: 0 -30px;
     box-shadow: 0 15px 20px -4px hsla(210, 33%, 20%, 0.3);
 }
 
@@ -289,12 +356,16 @@ header {
 
 /* --------------- 4.4 Services ------------- */
 
-.services {
+.services-section {
     position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: var(--section-distance);
+    padding: 140px 0 85px 0;
+}
+
+.services-section::before {
+    content: "services";
 }
 
 .services-article {
@@ -305,8 +376,11 @@ header {
     flex-shrink: 0;
     align-items: flex-start;
     border: 1px solid var(--background-purple);
+    background-color: var(--background-white);
     padding: 24px;
     margin: 12px;
+    box-shadow: 0 10px 10px -4px hsla(210, 33%, 20%, 0.2);
+
 }
 
 .services-icon {
@@ -356,6 +430,7 @@ header {
 #submit-button {
     margin: 10px 0 0 0;
 }
+
 /* --------------- 4.6 Footer ------------- */
 
 footer {
