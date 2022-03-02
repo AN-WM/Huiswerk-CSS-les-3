@@ -25,7 +25,6 @@
 /* ------------------------------- 2. Typography ----------------------------------- */
 
 /* --------------- 2.1 Global Typography ------------------- */
-
 h1, h2, h3, h4 {
     font-family: 'Merriweather', sans-serif;
     font-weight: 700;
@@ -100,7 +99,11 @@ header p {
 }
 
 .work-article p {
-    margin: 30px 0;
+    margin: 51px 0 30px 0;
+}
+
+.work-article h3 {
+    position: relative;
 }
 
 .work-article a:link, .work-article a:visited {
@@ -149,18 +152,14 @@ footer p {
 
 
 /* ------------------------------- 3. Layout --------------------------------------- */
-
+/* --------------- 3.1 Basis items ------------------- */
 .content-container {
     flex-basis: 100%;
     width: var(--content-container-width);
     flex-grow: 1;
-    flex-shrink: 1;
+    flex-shrink: 0;
     text-align: center;
     position: relative;
-}
-
-.content-container, .work-container, .services-article {
-    z-index: 10;
 }
 
 .pink-button {
@@ -182,11 +181,11 @@ footer p {
     height: 200px;
     width: 1000px;
     top: 0;
-    left: calc(50% - 500px);
-    z-index: 2;
+    transform: translateX(-50%);
+    left: 50%;
 }
 
-/*Schuine balken*/
+/* --------------- 3.2 Schuine balken ------------------- */
 .bevel-top {
     border-right: 100vw solid transparent;
     position: absolute;
@@ -206,6 +205,23 @@ footer p {
     border-top: 30px solid var(--background-white);
     position: absolute;
     bottom: -30px;
+}
+
+/* --------------- 3.3 Z-indexing ------------------- */
+.content-container, .work-container,
+.services-article, header, .pink-button {
+    z-index: 5;
+}
+
+.bevel-top, .bevel-bottom {
+    z-index: 10;
+}
+
+.hello-section::before, .work-section::before, .services-section::before {
+    z-index: 3;
+}
+
+header::before, .contact-form::before {
     z-index: 1;
 }
 
@@ -243,6 +259,17 @@ header {
     padding: 20px 20px 45px 20px;
 }
 
+header::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("assets/noise-texture.png");
+    opacity: 40%;
+}
+
 .header-container {
     margin: 20px 20px 70px 20px;
 }
@@ -255,6 +282,7 @@ header::after {
     bottom: 0;
     left: calc(50% - 23px);
     background-image: url("assets/squiggle_line_stripe.svg");
+    background-repeat: no-repeat;
     background-size: contain;
 }
 
@@ -307,12 +335,26 @@ header::after {
 
 .work-container {
     display: flex;
+    position: relative;
     flex-basis: 100%;
     flex-grow: 0;
     flex-shrink: 0;
     justify-content: space-around;
     align-items: center;
     margin: 30px 40px;
+}
+
+.work-article h3::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    height: 10px;
+    width: 35px;
+    top: 45px;
+    left: 0;
+    background-image: url("assets/squiggle_line.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .article-left {
@@ -331,10 +373,6 @@ header::after {
     width: 53%;
     margin: 0 -30px;
     box-shadow: 0 15px 20px -4px hsla(210, 33%, 20%, 0.3);
-}
-
-.squiggle {
-    width: 35px;
 }
 
 /*Beginstaat lijntje*/
@@ -406,6 +444,17 @@ header::after {
     color: var(--background-white);
     background: var(--background-gradient);
     padding: 70px 0 40px 0;
+}
+
+.contact-form::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("assets/noise-texture.png");
+    opacity: 40%;
 }
 
 .form-item {
