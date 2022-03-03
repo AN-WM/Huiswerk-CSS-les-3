@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-    --content-container-width: 514px;
+    --content-container-width: 100vw;
     --article-width: 220px;
     --form-height: 35px;
     --background-purple: hsl(259, 72%, 47%);
@@ -15,12 +15,19 @@
     --background-gradient: linear-gradient(to right, var(--background-blue), var(--background-purple));
 }
 
+@media screen and (min-width: 768px) {
+    :root {
+        --content-container-width: 514px;
+    }
+}
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 * {
     margin: 0;
     box-sizing: border-box;
 }
+
+
 
 /* ------------------------------- 2. Typography ----------------------------------- */
 
@@ -78,6 +85,7 @@ a:link, a:visited {
     font-size: 0.7em;
     padding: 10px;
 }
+
 
 /* --------------- 2.2 Specific Typography ------------------- */
 
